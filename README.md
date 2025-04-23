@@ -1,6 +1,9 @@
 # attendance-app
 CS4296 Group Project
 
+Group No.: 98
+Student(SID): Li Ka Chun(57892543) and YU Kam Ming(57882760)
+
 A full-stack attendance management application built with Node.js for the backend and a modern JavaScript framework for the frontend. This project allows users to register and track attendance through a system that integrates NFC and QR codes.
 
 ## Project Structure
