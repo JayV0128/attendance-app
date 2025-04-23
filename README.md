@@ -55,12 +55,12 @@ ATTENDANCE-APP-MAIN
 - Real-Time Attendance Tracking: Attendance is logged using NFC and QR codes.
 
 ## Technologies Used
-# Backend:
+### Backend:
 - Node.js
 - Express.js
 - MySQL for user and attendance data
 - Docker (Optional)
-# Frontend:
+### Frontend:
 - React
 - Vite
 - Ant Design (for UI components)
