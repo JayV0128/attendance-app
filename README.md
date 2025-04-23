@@ -50,6 +50,8 @@ ATTENDANCE-APP-MAIN
    - http://localhost:5173  # For the frontend
    - http://localhost:8080  # For the backend API
 
+## Deployment (Production)
+We also deployed our backend server to AWS Elastic Beanstalk, which ensures that the application runs smoothly with scalability and high availability in a cloud environment(http://attendance-system-env-1.eba-sem4anku.us-east-1.elasticbeanstalk.com).
 
 ## Features
 - User Registration: Users can sign up with their name and other required information.
