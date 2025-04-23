@@ -30,7 +30,7 @@ ATTENDANCE-APP-MAIN
 
 ## Installation (Local)
 1. Clone the Repository
-   - git clone https://your-repository-url.git
+   - git clone https://github.com/JayV0128/attendance-app.git
    - cd ATTENDANCE-APP-MAIN
 2. Set up the Backend
    - cd attendance-backend
