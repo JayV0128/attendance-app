@@ -9,27 +9,32 @@ A full-stack attendance management application built with Node.js for the backen
 ## Project Structure
 ATTENDANCE-APP-MAIN
 - attendance-backend
-   - controllers        # Contains the logic for handling different routes
-   - models             # Contains the models defining database structure
-   - node_modules       # Backend dependencies
-   - routes             # Defines all backend API routes
-   - Dockerfile         # Docker configuration for the backend
-   - package-lock.json  # Backend package lock
-   - package.json       # Backend dependencies and scripts
-   - server.js          # Main entry point for the backend server
+   - controllers           # Contains the logic for handling different routes
+   - models                # Contains the models defining database structure
+   - node_modules          # Backend dependencies
+   - routes                # Defines all backend API routes
+   - Dockerfile            # Docker configuration for the backend
+   - package-lock.json     # Backend package lock
+   - package.json          # Backend dependencies and scripts
+   - server.js             # Main entry point for the backend server
 
-- attendance-frontend
-   - node_modules       # Frontend dependencies
-   - public             # Static files served to the client
-   - src                # Source code for frontend components and pages
-   - .env               # Environment variables for the frontend
-   - eslint.config.js   # ESLint configuration for frontend
-   - index.html         # Main HTML file for the frontend
-   - package-lock.json  # Frontend package lock
-   - package.json       # Frontend dependencies and scripts
-   - vite.config.js     # Vite configuration for bundling the frontend
-
-- README.md             # This file
+- attendance-frontend   
+   - node_modules          # Frontend dependencies
+   - public                # Static files served to the client
+   - src                   # Source code for frontend components and pages
+   - .env                  # Environment variables for the frontend
+   - eslint.config.js      # ESLint configuration for frontend
+   - index.html            # Main HTML file for the frontend
+   - package-lock.json     # Frontend package lock
+   - package.json          # Frontend dependencies and scripts
+   - vite.config.js        # Vite configuration for bundling the frontend
+- tests  
+   - stress_test_10.js     # Simulates 10 concurrent users
+   - stress_test_30.js     # Simulates 30 concurrent users
+   - stress_test_50.js     # Simulates 50 concurrent users
+   - throughput_test_1.js  # Measures throughput with 1 user
+   - throughput_test_5.js  # Measures throughput with 5 users
+- README.md                # This file
 
 ## Installation (Local)
 1. Clone the Repository
