@@ -1,4 +1,4 @@
-# attendance-app
+# Attendance-app
 CS4296 Group Project
 
 Group No.: 98 <br>
