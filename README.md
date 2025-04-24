@@ -31,7 +31,9 @@ ATTENDANCE-APP-MAIN
 - tests  
    - stress_test_10.js     # Simulates 10 concurrent users
    - stress_test_30.js     # Simulates 30 concurrent users
-   - stress_test_50.js     # Simulates 50 concurrent users
+   - stress_test_50.js     # Simulates 50 concurrent users with t3.micro
+   - stress_test_c5l.js    # Simulates 50 concurrent users with c5.large
+   - stress_test_t3m.js    # Simulates 50 concurrent users with t3.medium
    - throughput_test_1.js  # Measures throughput with 1 user
    - throughput_test_5.js  # Measures throughput with 5 users
 - README.md                # This file
