@@ -74,3 +74,5 @@ We also deployed our backend server to AWS Elastic Beanstalk, which ensures that
 - React
 - Vite
 - Ant Design (for UI components)
+- NFC Scanning (via keyboard simulation)
+- QR Code Scanning (via webcam)
