@@ -47,13 +47,14 @@ ATTENDANCE-APP-MAIN
    - npm install
    - npm start
 3. Set up the Frontend
+   - cd attendance-frontend
    - npm i --legacy-peer-deps
    - npm run dev
-4. Docker (Optional)
+5. Docker (Optional)
    - Build and run the backend Docker container:
       - docker build -t attendance-backend .
       - docker run -p 5000:5000 attendance-backend
-5. Open the Application
+6. Open the Application
    - http://localhost:5173  # For the frontend
    - http://localhost:8080  # For the backend API
 
