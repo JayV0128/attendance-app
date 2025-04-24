@@ -4,47 +4,58 @@ import { Button, Card, Alert, Spin } from 'antd';
 const NfcAttendence = () => {
   const [nfcStatus, setNfcStatus] = useState('waiting');
   const [extractedData, setExtractedData] = useState(null);
-  const [currentInput, setCurrentInput] = useState(''); // Store the accumulated input
+  const [currentInput, setCurrentInput] = useState('');
+
+  const [scanStartTime, setScanStartTime] = useState(null);
+  const [scanDuration, setScanDuration] = useState(null);
+  const [fullResponseTime, setFullResponseTime] = useState(null);
 
   useEffect(() => {
     const handleNfcDetection = (event) => {
-      // Accumulate characters until the input reaches exactly 10 characters
-      if (currentInput.length < 10 && event.key !== 'Enter') {
-        setCurrentInput((prevInput) => prevInput + event.key);  // Add key to the current input
+      if (currentInput.length === 0 && event.key !== 'Enter') {
+        setScanStartTime(Date.now());
       }
 
-      // Process the input when the length is 10
+      if (currentInput.length < 10 && event.key !== 'Enter') {
+        setCurrentInput((prevInput) => prevInput + event.key);
+      }
+
       if (currentInput.length === 9 && event.key !== 'Enter') {
+        const endTime = Date.now();
+        const duration = endTime - scanStartTime;
+
         const mockData = {
-          token: currentInput + event.key,  // Append the last key press to complete the token
+          token: currentInput + event.key,
           timestamp: new Date().toISOString(),
         };
 
-        setExtractedData(mockData);  // Store the data after exactly 10 characters
+        setExtractedData(mockData);
+        setScanDuration(duration);
         setNfcStatus('success');
-        console.log("NFC tag detected:", mockData); // Log the full token
-        setCurrentInput('');  // Reset the input after capturing
+        console.log("NFC tag detected:", mockData);
+        setCurrentInput('');
       }
     };
 
-    // Simulate NFC event listening (replace with real NFC listener)
     window.addEventListener('keypress', handleNfcDetection);
     return () => window.removeEventListener('keypress', handleNfcDetection);
-  }, [currentInput]);
+  }, [currentInput, scanStartTime]);
 
   const resetScanner = () => {
     setExtractedData(null);
     setNfcStatus('waiting');
-    setCurrentInput(''); // Reset input on scanner reset
+    setScanDuration(null);
+    setFullResponseTime(null);
+    setCurrentInput('');
   };
 
   const takeAttendanceUsingNFC = async () => {
-    if (!extractedData) return;
+    if (!extractedData || !scanStartTime) return;
 
-    console.log("Submitting NFC data:", extractedData);
+    const startSubmit = Date.now();
+
     const url = import.meta.env.VITE_API_URL + "/attendance/log";
-    const response = await fetch(
-      url, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,12 +67,12 @@ const NfcAttendence = () => {
       })
     });
 
+    const fullTime = Date.now() - scanStartTime;
+    setFullResponseTime(fullTime);
+
     if (response.ok) {
-      const data = await response.json();
-      // console.log("Attendance submitted successfully:", data);
-      alert("Attendance submitted successfully!");
+      alert(`Attendance submitted successfully!\n⏱ Total Time: ${fullTime} ms`);
     } else {
-      // console.error("Error submitting attendance:", response.statusText);
       alert("Error submitting attendance. Please try again.");
     }
   };
@@ -69,7 +80,7 @@ const NfcAttendence = () => {
   return (
     <div style={containerStyle}>
       <h1 style={headerStyle}>NFC Attendance</h1>
-      
+
       <Card style={{ marginBottom: '24px', backgroundColor: '#f8f9fa' }}>
         <Alert
           message="NFC Usage Instructions"
@@ -103,6 +114,18 @@ const NfcAttendence = () => {
           </div>
         )}
 
+        {scanDuration && (
+          <p style={{ textAlign: 'center', marginTop: '12px', color: '#2ecc71' }}>
+            ⏱ Scan Duration: {scanDuration} ms
+          </p>
+        )}
+
+        {fullResponseTime && (
+          <p style={{ textAlign: 'center', marginTop: '8px', color: '#3498db' }}>
+            📦 Total Time (Scan → Confirmed): {fullResponseTime} ms
+          </p>
+        )}
+
         {nfcStatus === 'error' && (
           <div style={errorIndicatorStyle}>
             <div style={errorIconStyle}>!</div>
@@ -121,17 +144,17 @@ const NfcAttendence = () => {
               {JSON.stringify(extractedData, null, 2)}
             </pre>
           </Card>
-          
+
           <div style={{ marginTop: '24px', textAlign: 'center' }}>
-            <Button 
-              type="primary" 
+            <Button
+              type="primary"
               size="large"
               onClick={takeAttendanceUsingNFC}
               style={{ width: '100%', maxWidth: '300px' }}
             >
               Confirm Attendance
             </Button>
-            <Button 
+            <Button
               style={{ marginTop: '12px', width: '100%', maxWidth: '300px' }}
               onClick={resetScanner}
             >
