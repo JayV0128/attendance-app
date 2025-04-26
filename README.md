@@ -28,6 +28,7 @@ ATTENDANCE-APP-MAIN
    - package-lock.json     # Frontend package lock
    - package.json          # Frontend dependencies and scripts
    - vite.config.js        # Vite configuration for bundling the frontend
+
 - tests  
    - stress_test_10.js     # Simulates 10 concurrent users
    - stress_test_30.js     # Simulates 30 concurrent users
