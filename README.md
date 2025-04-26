@@ -43,11 +43,15 @@ ATTENDANCE-APP-MAIN
 1. Clone the Repository
    - git clone https://github.com/JayV0128/attendance-app.git
    - cd ATTENDANCE-APP-MAIN
-2. Set up the Backend
+2. Set up the Database
+   - mysql --version
+   - mysql -u root -p
+   - mysql -u root -p attendance-sys < /path/to/db/backup.sql
+3. Set up the Backend
    - cd attendance-backend
    - npm install
    - npm start
-3. Set up the Frontend
+4. Set up the Frontend
    - cd attendance-frontend
    - npm i --legacy-peer-deps
    - npm run dev
@@ -61,6 +65,8 @@ ATTENDANCE-APP-MAIN
 
 ## Deployment (Production)
 We also deployed our backend server to AWS Elastic Beanstalk, which ensures that the application runs smoothly with scalability and high availability in a cloud environment(http://attendance-system-env-1.eba-sem4anku.us-east-1.elasticbeanstalk.com).
+
+(Updated) Due to insufficient AWS Learner Lab credits, we recommend installing the application locally using our backup.sql file to simulate the situation.
 
 ## Features
 - User Registration: Users can sign up with their name and other required information.
