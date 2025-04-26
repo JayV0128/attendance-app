@@ -10,6 +10,7 @@ A full-stack attendance management application built with Node.js for the backen
 ATTENDANCE-APP-MAIN
 - attendance-backend
    - controllers           # Contains the logic for handling different routes
+   - db                    # Contains the backup.sql
    - models                # Contains the models defining database structure
    - node_modules          # Backend dependencies
    - routes                # Defines all backend API routes
