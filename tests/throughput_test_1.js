@@ -7,7 +7,9 @@ export let options = {
 };
 
 export default function () {
-  http.post('http://attendance-system-env-1.eba-sem4anku.us-east-1.elasticbeanstalk.com/attendance/log', JSON.stringify({
+  // IMPORTANT: Replace with your Elastic Beanstalk URL if different
+  // http.post('http://attendance-system-env-1.eba-sem4anku.us-east-1.elasticbeanstalk.com/attendance/log', JSON.stringify({
+  http.post('http://localhost:8080/attendance/log', JSON.stringify({
     token: `test-nfc-${__VU}`,
     method: 'NFC',
     deviceInfo: 'Web'
