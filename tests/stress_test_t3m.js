@@ -10,7 +10,9 @@ export let options = {
 };
 
 export default function () {
-  const url = 'http://attendance-sys-t3m-env.eba-qxidaary.us-east-1.elasticbeanstalk.com/attendance/log';
+  // IMPORTANT: If deploying to Elastic Beanstalk, replace the URL below with your Elastic Beanstalk environment URL
+  const url = 'http://localhost:8080/attendance/log';
+  // const url = 'http://attendance-sys-t3m-env.eba-qxidaary.us-east-1.elasticbeanstalk.com/attendance/log';
   const payload = JSON.stringify({
     token: `test-nfc-${__VU}`,
     method: 'NFC',
