@@ -47,6 +47,8 @@ ATTENDANCE-APP-MAIN
 2. Set up the Database
    - mysql --version
    - mysql -u root -p
+   - CREATE DATABASE IF NOT EXISTS `attendance-sys`;
+   - EXIT
    - mysql -u root -p attendance-sys < /path/to/db/backup.sql
 3. Set up the Backend
    - cd attendance-backend
@@ -67,7 +69,7 @@ ATTENDANCE-APP-MAIN
 ## Deployment (Production)
 We also deployed our backend server to AWS Elastic Beanstalk, which ensures that the application runs smoothly with scalability and high availability in a cloud environment(http://attendance-system-env-1.eba-sem4anku.us-east-1.elasticbeanstalk.com).
 
-(Updated) Due to insufficient AWS Learner Lab credits, we recommend installing the application locally using our backup.sql file to simulate the situation.
+(Updated on 25 Apr) Due to insufficient AWS Learner Lab credits ($48.9/$50.0), we recommend installing the application locally using our backup.sql file to simulate the situation.
 
 ## Features
 - User Registration: Users can sign up with their name and other required information.
